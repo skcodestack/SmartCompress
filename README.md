@@ -15,7 +15,7 @@
 
 ## 2.导入
     
-    
+    compile 'com.skcodestack:smartcompress:1.0'
 
 ## 3.方法介绍
 
@@ -141,7 +141,7 @@ INTERRUPTED	| 压缩图片线程被中断
 
 ## link
 
-[SmartCompress](#)
+[SmartCompress](https://github.com/skcodestack/SmartCompress)
 
 
 ## License

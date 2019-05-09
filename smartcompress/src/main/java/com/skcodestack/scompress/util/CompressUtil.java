@@ -46,7 +46,7 @@ public class CompressUtil {
      * 采样率压缩,设置图片默认宽高
      *
      * @param path
-     * @return
+     * @return Bitmap
      */
     public static Bitmap decodeFileWith960(String path) {
 
@@ -62,7 +62,7 @@ public class CompressUtil {
     /**
      * 解码图片
      * @param path
-     * @return
+     * @return Bitmap
      */
     public static Bitmap decodeFile(String path) {
         BitmapFactory.Options o = new BitmapFactory.Options();
@@ -75,7 +75,7 @@ public class CompressUtil {
      * @param path
      * @param width
      * @param height
-     * @return
+     * @return Bitmap
      */
     public static Bitmap decodeFile(String path, int width, int height) {
 

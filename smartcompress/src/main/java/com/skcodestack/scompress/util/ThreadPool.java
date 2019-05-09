@@ -26,7 +26,7 @@ public class ThreadPool {
 
     /**
      * 获取单列
-     * @return
+     * @return  ThreadPool
      */
     public static ThreadPool getInstance() {
         return Singleton.INSTANCE;

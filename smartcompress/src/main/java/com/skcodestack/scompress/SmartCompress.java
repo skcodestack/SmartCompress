@@ -6,10 +6,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.skcodestack.scompress.core.ErrorCode;
 import com.skcodestack.scompress.core.QualityLevel;
@@ -30,16 +28,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ProjectName: SmartCompress$
- * @Package: com.skcodestack.scompress$
- * @ClassName: SmartCompress$
- * @Author: sk
- * @CreateDate: 2019/5/8$ 10:33$
- * @UpdateUser: sk
- * @UpdateDate: 2019/5/8$ 10:33$
- * @UpdateRemark:
- * @Version: 1.0
- * @Description: 灵活的图片压缩框架
+ *灵活的图片压缩框架
  */
 public class SmartCompress {
 
@@ -87,8 +76,8 @@ public class SmartCompress {
     /**
      * 使用工厂模式创建
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return this
      */
     public static SmartCompress create(Context context) {
         return new SmartCompress(context);
@@ -98,8 +87,8 @@ public class SmartCompress {
     /**
      * 添加图片
      *
-     * @param paths
-     * @return
+     * @param paths 压缩图片
+     * @return this
      */
     public SmartCompress load(String... paths) {
         if (paths != null && paths.length > 0) {
@@ -111,8 +100,8 @@ public class SmartCompress {
     /**
      * 添加图片
      *
-     * @param list
-     * @return
+     * @param list 压缩图片 结合
+     * @return this
      */
     public SmartCompress load(List<String> list) {
         if (list != null && list.size() > 0) {
@@ -124,8 +113,8 @@ public class SmartCompress {
     /**
      * 设置图片压缩质量
      *
-     * @param level
-     * @return
+     * @param level 等级
+     * @return this
      */
     public SmartCompress quality(QualityLevel level) {
         if (level != null) {
@@ -137,8 +126,8 @@ public class SmartCompress {
     /**
      * 设置目标宽
      *
-     * @param width
-     * @return
+     * @param width 目标宽
+     * @return this
      */
     public SmartCompress width(int width) {
         mFinalWidth = width;
@@ -148,8 +137,8 @@ public class SmartCompress {
     /**
      * 设置目标高
      *
-     * @param height
-     * @return
+     * @param height 目标高
+     * @return this
      */
     public SmartCompress height(int height) {
         mFinalHeigth = height;
@@ -161,8 +150,8 @@ public class SmartCompress {
      * STRICT:严格模式 只有全部成功才成功
      * NORMAL:正常模式 一个成功就成功，不成功的返回原图片地址
      *
-     * @param mode
-     * @return
+     * @param mode 模式
+     * @return this
      */
     public SmartCompress mode(ResultMode mode) {
         if (mode != null) {
@@ -174,8 +163,8 @@ public class SmartCompress {
     /**
      * 设置压缩图片存放目录
      *
-     * @param dir
-     * @return
+     * @param dir  存放目录
+     * @return this
      */
     public SmartCompress dir(String dir) {
         this.mCompressDir = dir;
@@ -185,8 +174,8 @@ public class SmartCompress {
     /**
      * 设置压缩超时时间【单位：MILLISECONDS】,默认 20秒[20000]
      *
-     * @param timeout TimeUnit.MILLISECONDS
-     * @return
+     * @param timeout 超时时间 ,单位TimeUnit.MILLISECONDS
+     * @return this
      */
     public SmartCompress timeout(long timeout) {
         if (timeout >= 1000) {
@@ -200,8 +189,8 @@ public class SmartCompress {
     /**
      * 添加压缩监听,回调方法运行在主线程
      *
-     * @param listener
-     * @return
+     * @param listener 压缩监听
+     * @return this
      */
     public SmartCompress setCompressListener(OnCompressListener listener) {
         this.mCompressListener = listener;
@@ -211,8 +200,8 @@ public class SmartCompress {
     /**
      * 任务的状态监听，运行在主线程
      *
-     * @param listener
-     * @return
+     * @param listener 态监听
+     * @return this
      */
     public SmartCompress setProgressListener(OnProgressListener listener) {
         this.mProgressListener = listener;
@@ -326,16 +315,15 @@ public class SmartCompress {
     /**
      * 执行压缩任务
      *
-     * @param srcPath
-     * @param dstpath
-     * @param countDownLatch
+     * @param srcPath 源路径
+     * @param dstpath 目的路径
+     * @param countDownLatch countdownlatch
      */
     private void runCompress(String srcPath, String dstpath, CountDownLatch countDownLatch) {
 
         try {
             if (isCancle) {
                 mResultList.add(srcPath);
-                countDownLatch.countDown();
                 return;
             }
             Bitmap bitmap = CompressUtil.decodeFile(srcPath, mFinalWidth, mFinalHeigth);
@@ -345,9 +333,9 @@ public class SmartCompress {
                 mResultList.add(srcPath);
                 hasFailed = true;
             }
-            countDownLatch.countDown();
         } catch (Exception ex) {
             mResultList.add(srcPath);
+        }finally {
             countDownLatch.countDown();
         }
 
@@ -356,7 +344,7 @@ public class SmartCompress {
     /**
      * 等待压缩的任务
      *
-     * @param countDownLatch
+     * @param countDownLatch countdownlatch
      */
     private void runCompressWait(CountDownLatch countDownLatch) {
         try {
@@ -385,7 +373,7 @@ public class SmartCompress {
     /**
      * 添加压缩图片
      *
-     * @param paths
+     * @param paths 压缩图片
      */
     private void addPaths(List<String> paths) {
         if (mFileList == null) {
@@ -397,7 +385,7 @@ public class SmartCompress {
     /**
      * 成功回调
      *
-     * @param list
+     * @param list 返回的成功压缩图片
      */
     private void onSuccess(final List<String> list) {
         mHandler.post(new Runnable() {
@@ -418,7 +406,7 @@ public class SmartCompress {
     /**
      * 失败回调
      *
-     * @param code
+     * @param code 错误码
      */
     private void onError(final ErrorCode code) {
         mHandler.post(new Runnable() {

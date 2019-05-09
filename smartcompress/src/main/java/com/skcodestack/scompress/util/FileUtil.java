@@ -2,24 +2,12 @@ package com.skcodestack.scompress.util;
 
 import android.text.TextUtils;
 
-/**
- * @ProjectName: MyJoy$
- * @Package: com.skcodestack.imgcompress$
- * @ClassName: FileUtil$
- * @Author: sk
- * @CreateDate: 2019/5/7$ 10:37$
- * @UpdateUser: sk
- * @UpdateDate: 2019/5/7$ 10:37$
- * @UpdateRemark:
- * @Version: 1.0
- * @Description:
- */
 public class FileUtil {
 
     /**
      * 获取图片的后缀名 ，如果没有返回png
-     * @param filename
-     * @return
+     * @param filename 文件名
+     * @return 后缀名
      */
     public static String getImageSuffix(String filename){
         if (filename != null && !TextUtils.isEmpty(filename)) {
@@ -36,8 +24,8 @@ public class FileUtil {
     /**
      * 根据文件名判断，是否是图片类型
      *
-     * @param filename
-     * @return
+     * @param filename  文件名
+     * @return 类型
      */
     public static boolean isPicture(String filename) {
         if (filename != null && !TextUtils.isEmpty(filename)) {
