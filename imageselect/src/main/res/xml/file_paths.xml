@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<external-path name="ndk_images" path="images/"/>-->
+    <external-path
+        name="efiles"
+        path="" />
+    <files-path
+        name="ffiles"
+        path="" />
+    <cache-path
+        name="cfiles"
+        path="" />
+    <external-path
+        name="epfiles"
+        path="" />
+    <external-files-path
+        name="efpfiles"
+        path="" />
+    <external-cache-path
+        name="ecpfiles"
+        path="" />
+    <!--<files-path name="name" path="path" /> //相当 Context.getFilesDir() + path, name是分享url的一部分-->
+
+    <!--<cache-path name="name" path="path" /> //getCacheDir()-->
+
+    <!--<external-path name="name" path="path" /> //Environment.getExternalStorageDirectory()-->
+
+    <!--<external-files-path name="name" path="path" />//getExternalFilesDir(String) Context.getExternalFilesDir(null)-->
+
+    <!--<external-cache-path name="name" path="path" /> //Context.getExternalCacheDir()-->
+</paths>

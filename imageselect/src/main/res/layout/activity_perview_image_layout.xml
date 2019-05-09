@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff261f1f">
+
+
+    <com.skcodestack.imageselect.view.CustomViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.skcodestack.imageselect.view.CustomViewPager>
+
+    <FrameLayout
+        android:id="@+id/perview_actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_perview_back"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_back"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"/>
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_perview_count_hint"
+                style="@style/media_chooser_btn"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="0/0"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>
