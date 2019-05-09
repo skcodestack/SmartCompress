@@ -46,6 +46,8 @@ public class ImagePerviewActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_perview_image_layout);
+
         TranslucentCompat.setStatusBarColor(this, mTopLayout, false, getResources().getColor(R.color.transparent));
         TranslucentCompat.setNavigationBarColor(this, false, getResources().getColor(R.color.transparent));
 
